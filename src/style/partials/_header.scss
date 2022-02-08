@@ -1,0 +1,342 @@
+.header {
+    padding: 50px 0;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+
+    transition: padding 0.3s linear, box-shadow 0.3s linear,
+        background-color 0.3s linear;
+
+    @include for-tablet-landscape {
+        padding: 30px 0;
+    }
+
+    @include for-tablet-portrait {
+        padding: 15px 0;
+    }
+
+    @include for-phone-only {
+        padding: 10px 0;
+    }
+
+    &.fixed {
+        padding: 10px 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+
+        transition: padding 0.3s linear, box-shadow 0.3s linear,
+            background-color 0.3s linear;
+
+        @include for-laptop {
+            box-shadow: -12px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    &.fixed .nav__link {
+        color: $black;
+
+        &:hover {
+            color: $red;
+        }
+    }
+
+    &.fixed .logo__right {
+        border-color: $red;
+        color: $red;
+
+        transform: translateX(-99.5%);
+        transition: transform 0.7s linear, border-color 0.4s linear,
+            color 0.4s linear;
+    }
+
+    &.fixed .logo__left {
+        border-color: $red;
+        background-color: $red;
+        color: #fff;
+
+        transition: border-color 0.4s linear, background-color 0.4s linear,
+            color 0.3s linear;
+    }
+}
+
+.header__inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 36px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    
+    @include for-phone-only {
+        font-size: 32px;
+    }
+}
+
+.logo__left {
+    border: 3px solid #fff;
+    border-right: 0;
+    font-weight: bold;
+    padding: 5px 15px;
+    line-height: 1;
+    background-color: #fff;
+    color: $black;
+    z-index: 1;
+
+    transition: border-color 0.4s linear, background-color 0.4s linear,
+        color 0.3s linear;
+
+    @include for-phone-only {
+        padding: 3px 10px;
+    }
+}
+
+.logo__right {
+    border: 3px solid #fff;
+    border-left: 0;
+    padding: 5px 10px;
+    font-weight: 300;
+    line-height: 1;
+    color: #fff;
+    z-index: 0;
+
+    transition: transform 0.7s linear, border-color 0.4s linear,
+        color 0.4s linear;
+
+        @include for-phone-only {
+            padding: 3px 8px;
+        }
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+
+    @include for-laptop {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        width: 100%;
+        height: 100%;
+
+        position: fixed;
+        left: 0;
+        top: 0;
+
+        background-color: #fff;
+
+        visibility: hidden;
+        opacity: 0;
+
+        transition: opacity 0.3s linear, visibility 0.3s linear;
+
+        z-index: 1000;
+
+        &.active {
+            visibility: visible;
+            opacity: 1;
+
+            & .nav__link {
+                font-size: 30px;
+                opacity: 1;
+            }
+        }
+    }
+
+    @include for-tablet-landscape {
+        justify-content: flex-start;
+        overflow-y: auto;
+        padding: 150px 0;
+    }
+
+    @include for-tablet-portrait {
+        padding: 130px 0;
+    }
+
+    @include for-phone-only {
+        &.active {
+            & .nav__link {
+                @include for-phone-only {
+                    font-size: 27px;
+                }
+            }
+        }
+    }
+}
+
+.nav__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+
+    @include for-laptop {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+.nav__item {
+    &:not(:last-child) {
+        margin-right: 50px;
+
+        @include for-laptop {
+            margin: 0 0 35px;
+        }
+
+        @include for-tablet-landscape {
+            margin: 0 0 22px;
+        }
+    }
+}
+
+.nav__link {
+    position: relative;
+    padding: 7px 0;
+    margin: 0;
+
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $white;
+
+    transition: color, 0.2s linear;
+
+    @include for-laptop {
+        color: $black;
+        margin: 0 0 30px;
+        font-size: 10px;
+        opacity: 0;
+        transition: color 0.2s linear, font-size 0.3s linear,
+        opacity 0.2s linear;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        // right: 0;
+        height: 2px;
+        background-color: $red;
+        pointer-events: none;
+        // opacity: 0;
+        max-width: 100%;
+        width: 0;
+
+        transition: opacity 0.2s linear, width 0.2s linear;
+
+        @include for-tablet-landscape {
+            bottom: -7px;
+        }
+    }
+
+    &:hover {
+        color: $red;
+        
+
+        &:before {
+            // opacity: 1;
+            width: 100%;
+            // transition: opacity, 0.2s linear;
+        }
+    }
+}
+
+.nav-toggle {
+    width: 50px;
+    height: 50px;
+    display: none;
+
+    border: 0;
+    background-color: #fff;
+
+    z-index: 1;
+    cursor: pointer;
+    z-index: 10000;
+
+    @include for-laptop {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @include for-phone-only {
+        width: 40px;
+        height: 40px;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:hover .nav-toggle__item {
+        background-color: $red;
+
+        &::before,
+        &::after {
+            background-color: $red;
+        }
+    }
+
+    &.active .nav-toggle__item {
+        background: #fff;
+        transition: background-color 0.1s linear;
+    }
+
+    &.active .nav-toggle__item::before {
+        transform: rotate(45deg);
+    }
+
+    &.active .nav-toggle__item::after {
+        transform: rotate(-45deg);
+    }
+}
+
+.nav-toggle__item {
+    width: 30px;
+    height: 3px;
+
+    display: block;
+
+    background-color: $black;
+    font-size: 0;
+    color: transparent;
+
+    position: relative;
+    transition: background-color 0.2s linear;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        z-index: 1;
+        height: 3px;
+        width: 100%;
+        background-color: $black;
+        transition: transform 0.2s linear, background-color 0.2s linear;
+    }
+
+    &::before {
+        transform: translateY(7px);
+    }
+
+    &::after {
+        transform: translateY(-7px);
+    }
+}

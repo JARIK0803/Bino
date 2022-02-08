@@ -1,0 +1,57 @@
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $white;
+    z-index: 999999;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.line-scale-pulse-out > div {
+    background-color: $red;
+    width: 5px;
+    height: 40px;
+    border-radius: 3px;
+    margin: 3px;
+    animation-fill-mode: both;
+    display: inline-block;
+    animation: line-scale-pulse-out 0.9s -0.6s infinite cubic-bezier(0.85, 0.25, 0.37, 0.85);
+}
+
+.line-scale-pulse-out {
+    & > div{
+        &:nth-child(2),
+        &:nth-child(4) {
+            animation-delay: -0.4s;
+        }
+
+        &:nth-child(1),
+        &:nth-child(5) {
+            animation-delay: -0.2s;
+        }
+    }
+}
+
+@keyframes line-scale-pulse-out {
+    0% {
+        transform: scaley(1);
+    }
+    50% {
+        transform: scaley(0.4);
+    }
+    100% {
+        transform: scaley(1);
+    }
+}

@@ -1,0 +1,131 @@
+.reviews {
+    position: relative;
+    background-color: $white;
+    background-image: url(../img/reviews/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 0;
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(#000000, 0.4);
+    }
+}
+
+.reviews__slider {
+    padding: 120px 0 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    @include for-tablet-portrait {
+        padding: 110px 0 90px;
+    }
+}
+
+.reviews__item {
+    margin: 0 15px 80px;
+    padding: 50px;
+
+    min-height: 300px;
+
+    border-left: 4px solid $red;
+
+    background-color: #fff;
+
+    outline: 0;
+    z-index: 1;
+
+    box-shadow: 0 10px 50px 0 rgba(#000000, 0.3);
+
+    @include for-laptop {
+        margin: 0 15px 60px;
+    }
+
+    @include for-tablet-portrait {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 40px;
+    }
+
+    @include for-phone-only {
+        margin: 0 15px 60px;
+        padding: 25px 20px;
+        min-height: 320px;
+    }
+}
+
+.reviews__author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    @include for-tablet-portrait {
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+
+        margin-bottom: 10px;
+    }
+}
+
+.reviews__author-avatar {
+    margin-right: 20px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+
+    @include for-tablet-portrait {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+.reviews__author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviews__author-name {
+    margin-bottom: 5px;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: $gray-title;
+    font-weight: bold;
+
+    @include for-tablet-portrait {
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+}
+
+.reviews__author-position {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    color: $gray-light;
+}
+
+.reviews__text {
+    margin-left: 84px;
+
+    font-family: $font-stack;
+    font-size: 16px;
+
+    @include for-tablet-portrait {
+        margin-left: 0;
+        text-align: center;
+
+        font-size: 14px;
+    }
+}

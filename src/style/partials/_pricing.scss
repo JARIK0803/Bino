@@ -1,0 +1,172 @@
+.pricing__inner {
+    padding-bottom: 140px;
+
+    @include for-laptop {
+        padding-bottom: 90px;
+    }
+}
+
+.pricing__content {
+    display: flex;
+    justify-content: space-between;
+
+    @include for-laptop {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    @include for-tablet-landscape {
+        justify-content: space-around;
+    }
+}
+
+.pricing__item {
+    min-width: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include for-laptop {
+        margin: 0 25px 50px;
+    }
+
+    @include for-phone-only {
+        width: 100%;
+        min-width: auto;
+        max-width: 370px;
+
+        margin: 0 0 50px;
+    }
+
+    &:hover .pricing__item-header {
+        background-color: $red;
+    }
+
+    &:hover .pricing__price-title {
+        color: $red;
+    }
+}
+
+.pricing__item-header {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 205px;
+    text-align: center;
+
+    background-color: $gray;
+    transition: background-color, 0.2s linear;
+
+    @include for-phone-only {
+        height: 170px;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        height: 175px;
+        width: 175px;
+        border-radius: 50%;
+        background-color: rgba(#fff, 0.25);
+
+        @include for-phone-only {
+            height: 160px;
+            width: 160px;
+        }
+    }
+}
+
+.pricing__title {
+    margin-top: 50px;
+
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #fff;
+
+    @include for-phone-only {
+        margin-top: 40px;
+        font-size: 22px;
+    }
+}
+
+.pricing__item-body {
+    position: relative;
+    padding: 120px 30px 40px;
+    background-color: $white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 370px;
+    height: auto;
+    min-height: 400px;
+
+    @include for-phone-only {
+        padding: 95px 20px 30px;
+        min-height: 330px;
+    }
+}
+
+.pricing__price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 152px;
+    width: 152px;
+    background-color: #fff;
+    border-radius: 50%;
+
+    @include for-phone-only {
+        height: 140px;
+        width: 140px;
+    }
+}
+
+.pricing__price-title {
+    font-family: "Source Sans Pro", serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: $gray;
+
+    transition: color, 0.2s linear;
+
+    @include for-phone-only {
+        font-size: 36px;
+    }
+}
+
+.pricing__price-subtitle {
+    font-family: "Source Sans Pro", serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: $gray;
+    text-transform: lowercase;
+}
+
+.pricing__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pricing__list-item {
+    padding-bottom: 20px;
+    
+    font-size: 14px;
+    font-weight: 600;
+}

@@ -1,0 +1,293 @@
+.modal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 45px 15px;
+
+    background-color: rgba($black, 0.8);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    overflow-y: auto;
+
+    opacity: 0;
+    transition: opacity 0.2s linear, visibility 0.2s linear;
+    visibility: hidden;
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.modal__dialog {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    margin: auto;
+    background-color: $white;
+
+    transform: scale(0.7);
+    opacity: 0;
+    transition: transform 0.2s linear, opacity 0.2s linear;
+
+    @include for-tablet-landscape {
+        max-width: 700px;
+    }
+
+    &--thanks {
+        max-width: 600px;
+        border-left: 3px solid $red;
+    }
+}
+
+.modal__close {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $white;
+    border-radius: 50%;
+    border: 0;
+
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1;
+    box-shadow: 0px 0px 10px rgba(#000000, 0.25);
+    cursor: pointer;
+
+    @include for-tablet-landscape {
+        top: 20px;
+        right: 20px;
+    }
+
+    @include for-phone-only {
+        top: 12px;
+        right: 12px;
+    }
+
+    &:active {
+        outline: none;
+    }
+
+    &:hover .modal__close-icon {
+        fill: $red;
+    }
+
+    & .modal__close-icon {
+        fill: $gray;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        transition: transform 0.2s linear, fill 0.1s linear;
+    }
+}
+
+.modal-info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 800px;
+    overflow: hidden;
+
+    @include for-laptop {
+        height: 850px;
+    }
+
+    @include for-tablet-landscape {
+        height: auto;
+        flex-direction: column;
+    }
+}
+
+.modal-info__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 55%;
+    height: 100%;
+
+    padding: 20px 40px 40px;
+
+    text-align: left;
+
+    @include for-laptop {
+        padding: 20px 30px 40px;
+    }
+
+    @include for-tablet-landscape {
+        width: 100%;
+        padding: 50px 40px;
+    }
+
+    @include for-phone-only {
+        padding: 60px 15px 50px;
+    }
+
+    & > .section-header {
+        padding: 20px 0 25px;
+
+        @include for-tablet-landscape {
+            padding: 0 0 25px;
+        }
+
+        @include for-phone-only {
+            width: 100%;
+            padding: 0 0 15px;
+        }
+    }
+}
+
+.modal-info__img-wrapper {
+    width: 45%;
+    height: 100%;
+
+    & .modal-info__img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+
+        @include for-tablet-landscape {
+            display: none;
+        }
+    }
+}
+
+.modal-info__content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.modal-info__conten-inner {
+    width: 100%;
+}
+
+.modal-info__description {
+    width: 100%;
+    margin-bottom: 25px;
+    font-family: "Source Sans Pro", serif;
+    color: $gray-title;
+    font-size: 16px;
+    line-height: 1.4;
+
+    @include for-phone-only {
+        text-align: center;
+    }
+}
+
+.modal-info__list-block {
+    margin-bottom: 20px;
+}
+
+.modal-info__list {
+    @include for-phone-only {
+        padding-left: 20px;
+    }
+}
+
+.modal-info__list-description {
+    font-size: 18px;
+    color: $gray-title;
+    font-weight: 600;
+}
+
+.modal-info__list-item {
+    font-size: 14px;
+    color: $red;
+
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+
+    & span {
+        color: $gray-title;
+    }
+}
+
+.modal-info__pricing-title {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: $gray-title;
+    font-weight: bold;
+}
+
+.modal-info__pricing {
+    width: 100%;
+}
+
+.modal-info__pricing-lesson {
+    padding-left: 20px;
+    max-width: 550px;
+    font-family: $font-stack;
+    font-size: 14px;
+    color: $gray-title;
+
+    @include for-tablet-landscape {
+        margin-bottom: 40px;
+    }
+
+    @include for-phone-only {
+        padding-left: 0px;
+    }
+}
+
+.modal-info__pricing-text {
+    margin-bottom: 6px;
+    font-size: 15px;
+    color: $gray-title;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+
+    @include for-phone-only {
+        font-size: 14px;
+    }
+}
+
+.modal-info__pricing-ticket {
+    line-height: 1.6;
+
+    @include for-tablet-landscape {
+        margin-bottom: 40px;
+    }
+
+    & span {
+        font-weight: 600;
+    }
+}
+
+// MODAL THANKS============================================
+.modal-thanks {
+    min-height: 270px;
+    padding: 50px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.modal-thanks__text {
+    font-size: 40px;
+    font-family: $font-stack;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: $black;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
